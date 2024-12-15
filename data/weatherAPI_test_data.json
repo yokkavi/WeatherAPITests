@@ -1,0 +1,32 @@
+[
+    {
+        "uri": "/current.json",
+        "method": "GET",
+        "params": {
+            "key": "7ff5de645be8488a991130100241312",
+            "q": "Paris",
+            "lang": "ru"
+            },
+        "headers": {
+            "User-Agent": "Custom user agent"
+        }
+    },
+    {
+        "uri": "/forecast.json",
+        "method": "GET",
+        "params": {
+            "key": "7ff5de645be8488a991130100241312",
+            "q": "Paris",
+            "lang": "",
+            "dt": "",
+            "unixdt": "",
+            "hour": "",
+            "alerts": "no",
+            "aqi": "no",
+            "tp": "15"
+        },
+        "headers": {
+            "User-Agent": "Custom user agent"
+        }
+    }
+]
