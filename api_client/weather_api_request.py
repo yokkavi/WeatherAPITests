@@ -1,8 +1,6 @@
-from dataclasses import asdict
-
-from api_client.weather_API_params import RequestParametersBase, RequestParametersForecast
-
 """https://app.swaggerhub.com/apis-docs/WeatherAPI.com/WeatherAPI/1.0.2#/APIs/forecast-weather"""
+
+from api_client.weather_api_params import RequestParametersBase, RequestParametersForecast
 
 # TODO create requests enum based on requirements ('forecast', 'future' etc)
 # TODO use enum instead if, add exception for empty params
@@ -22,18 +20,17 @@ class WeatherAPIRequest:
         self.params = self.build_request_params(kwargs.get('params'))
 
     def update_params(self, **kwargs):
+        """update params: RequestParametersBase field with kwargs data set"""
         for arg, val in kwargs.items():
-            self.params.__setattr__(arg, val)
+            setattr(self.params, arg, val)
 
-
-
-    def build_request_params(self, params):
+    def build_request_params(self, params) -> RequestParametersBase:
+        """setup params field depends on uri"""
         if 'forecast' in self.uri and params:
             return RequestParametersForecast(**params)
-        else:
-            return RequestParametersBase(**params)
+        return RequestParametersBase(**params)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f'WeatherAPIRequest\n'
                 f'method: {self.method}\n'
                 f'headers: {self.headers}\n'
