@@ -1,10 +1,11 @@
+"""Based on https://www.weatherapi.com/docs/
+https://app.swaggerhub.com/apis-docs/WeatherAPI.com/WeatherAPI/1.0.2#/APIs/forecast-weather"""
 from dataclasses import dataclass
 #TODO add more requests
 
 @dataclass
 class RequestParametersBase:
-    """Based on https://www.weatherapi.com/docs/
-    request parameters"""
+    """current request parameters"""
     key: str
     q: str
     lang: str = 'ru'
@@ -12,9 +13,7 @@ class RequestParametersBase:
 
 @dataclass
 class RequestParametersForecast(RequestParametersBase):
-    """ Based on
-    https://app.swaggerhub.com/apis-docs/WeatherAPI.com/WeatherAPI/1.0.2#/APIs/forecast-weather
-    request parameters"""
+    """Forecast request parameters"""
     dt: str = ''
     unixdt: str = '' #pass 'dt' or 'unixdt'
     hour: str = ''
